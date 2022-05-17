@@ -24,11 +24,11 @@ public class Deck {
     }
 
     public String toString() {
-        String cardListOutput = "";
+        String cardList = "";
         for (Card card : this.deck) {
-            cardListOutput += "\n-" + card.toString();
+            cardList += "\n-" + card.toString();
         }
-        return cardListOutput;
+        return cardList;
     }
 
 

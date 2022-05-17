@@ -52,7 +52,7 @@ public class BlackJackGame {
             dealerCard.draw(playingDeck);
 
 
-            boolean endRound = false;
+            boolean winner = false;
 
                 System.out.println("Your hand: ");
                 System.out.println(playerCard.toString());
@@ -87,7 +87,7 @@ public class BlackJackGame {
                     System.out.println("Dealer wins!!!");
                     System.out.println("You lost $" + (betAmount ) + "! Your new account balance is $" + (bettingMoney - (betAmount )+ "."));
                     bettingMoney -= betAmount;
-                    endRound = true;
+                    winner = true;
                     playerCard.moveAllToDeck(playingDeck);
                     dealerCard.moveAllToDeck(playingDeck);
                     break;
@@ -101,19 +101,19 @@ public class BlackJackGame {
                 }
                 
                 //If dealer goes over 21 they bust, and player wins. Cards are put back in deck 
-                if ((dealerCard.cardsValue()  > 21) && !endRound) {
+                if ((dealerCard.cardsValue()  > 21) && !winner) {
                     System.out.println("Dealer busts! You win.");
                     System.out.println("You won $" + (betAmount * 2 ) + "! Your new account balance is $" + (bettingMoney + (betAmount *2)+ "."));
                     bettingMoney += betAmount;
-                    endRound = true;
+                    winner = true;
                     playerCard.moveAllToDeck(playingDeck);
                     dealerCard.moveAllToDeck(playingDeck);
                     break;
                     }
                 
                 //if no one bust, player wins if value higher than dealer
-                if ((playerCard.cardsValue() > dealerCard.cardsValue()) && !endRound) {
-                    System.out.println("You win the hand!");
+                if ((playerCard.cardsValue() > dealerCard.cardsValue()) && !winner) {
+                    System.out.println("You won the hand!");
                     System.out.println("Player's hand value: " + playerCard.cardsValue());
                     System.out.println("Dealer's hand value: " +dealerCard.cardsValue());
                     bettingMoney += betAmount;
@@ -122,8 +122,8 @@ public class BlackJackGame {
                     break;
                     
                 //if no one bust, dealers wins if value higher than player
-                } else if (!endRound) {
-                    System.out.println("You lose the hand!");
+                } else if (!winner) {
+                    System.out.println("You lost the hand!");
                     System.out.println("Dealer's hand value: " +dealerCard.cardsValue());
                     System.out.println("Player's hand value: " +playerCard.cardsValue());
                     bettingMoney -= betAmount;
