@@ -75,7 +75,6 @@ public class Deck {
         int total = 0;
         int aces = 0;
 
-        // Get the value of every card in the deck
         for (Card card : this.deck) {
             switch (card.getValue()) {
                 case TWO -> total += 2;
